@@ -15,6 +15,8 @@
 		6D6DE3702566DDB000344ECD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D6DE36E2566DDB000344ECD /* LaunchScreen.storyboard */; };
 		6D6DE3862566DDB000344ECD /* theForkUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6DE3852566DDB000344ECD /* theForkUITests.swift */; };
 		6D6DE3912566DDB000344ECD /* theForkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6DE3902566DDB000344ECD /* theForkTests.swift */; };
+		6D6DE3B32566E5D000344ECD /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6DE3B22566E5D000344ECD /* NetworkService.swift */; };
+		6D6DE3B82566E60A00344ECD /* RawRestaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6DE3B72566E60A00344ECD /* RawRestaurant.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		6D6DE38C2566DDB000344ECD /* theForkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = theForkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D6DE3902566DDB000344ECD /* theForkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = theForkTests.swift; sourceTree = "<group>"; };
 		6D6DE3922566DDB100344ECD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6D6DE3B22566E5D000344ECD /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		6D6DE3B72566E60A00344ECD /* RawRestaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RawRestaurant.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,7 +105,9 @@
 			children = (
 				6D6DE3632566DDAE00344ECD /* AppDelegate.swift */,
 				6D6DE3652566DDAE00344ECD /* SceneDelegate.swift */,
-				6D6DE3672566DDAE00344ECD /* ViewController.swift */,
+				6D6DE3AE2566E4BF00344ECD /* UI */,
+				6D6DE3AD2566E4B400344ECD /* domain */,
+				6D6DE3AC2566E45100344ECD /* data */,
 				6D6DE3692566DDAE00344ECD /* Main.storyboard */,
 				6D6DE36C2566DDB000344ECD /* Assets.xcassets */,
 				6D6DE36E2566DDB000344ECD /* LaunchScreen.storyboard */,
@@ -126,6 +132,30 @@
 				6D6DE3922566DDB100344ECD /* Info.plist */,
 			);
 			path = theForkTests;
+			sourceTree = "<group>";
+		};
+		6D6DE3AC2566E45100344ECD /* data */ = {
+			isa = PBXGroup;
+			children = (
+				6D6DE3B22566E5D000344ECD /* NetworkService.swift */,
+			);
+			path = data;
+			sourceTree = "<group>";
+		};
+		6D6DE3AD2566E4B400344ECD /* domain */ = {
+			isa = PBXGroup;
+			children = (
+				6D6DE3B72566E60A00344ECD /* RawRestaurant.swift */,
+			);
+			path = domain;
+			sourceTree = "<group>";
+		};
+		6D6DE3AE2566E4BF00344ECD /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				6D6DE3672566DDAE00344ECD /* ViewController.swift */,
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,8 +288,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6D6DE3B82566E60A00344ECD /* RawRestaurant.swift in Sources */,
 				6D6DE3682566DDAE00344ECD /* ViewController.swift in Sources */,
 				6D6DE3642566DDAE00344ECD /* AppDelegate.swift in Sources */,
+				6D6DE3B32566E5D000344ECD /* NetworkService.swift in Sources */,
 				6D6DE3662566DDAE00344ECD /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
