@@ -37,7 +37,7 @@ class NetWorkManager: NetWorkManagerProtocol {
         session = URLSession(configuration: sessionCfg)
     }
 
-    internal  func get<T>( route: String?, callback: ((Result<T, Error>) -> Void)?) where T: Decodable {
+    internal  func get<T>( _ type: T.Type ,route: String?, callback: ((Result<T, Error>) -> Void)?) where T: Decodable {
         if let task = currentTask { task.cancel() }
         guard let url = URL(string: route ?? "") else {
             callback?(Result.failure(NetworkError.badUrl))
@@ -61,7 +61,7 @@ class NetWorkManager: NetWorkManagerProtocol {
                 }
                 do {
                     let decoder = JSONDecoder()
-                    let responseObject  = try decoder.decode(T.self, from: data)
+                    let responseObject  = try decoder.decode(type, from: data)
                     callback?(Result.success(responseObject))
                 } catch {
                     print(error)
@@ -79,7 +79,7 @@ class NetWorkManager: NetWorkManagerProtocol {
         urlComponents.scheme = "https"
         urlComponents.host = RESTAURANT_HOST
         urlComponents.path = RESTAURANT_PATH
-        self.get( route: urlComponents.url?.absoluteString, callback: callback )
+        self.get(RawRestaurant.self, route: urlComponents.url?.absoluteString, callback: callback )
     }
 
     public  func getData(completion: @escaping GetResponse){
