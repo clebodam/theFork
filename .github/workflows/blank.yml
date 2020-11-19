@@ -12,7 +12,8 @@ jobs:
     
     steps:
     - uses: actions/checkout@master
-    - name: Go to directory
-      run: cd theFork
+    
     - name: Start xcodebuild test
-      run: xcodebuild clean test -project theFork.xcodeproj -scheme theFork -destination "platform=iOS Simulator,name=iPhone 11 Pro"
+      run: |
+          cd theFork
+          xcodebuild clean test -project theFork.xcodeproj -scheme theFork -destination "platform=iOS Simulator,name=iPhone 11 Pro"
