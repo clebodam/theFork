@@ -7,12 +7,11 @@
 
 import UIKit
 
-class HomeViewController: UIViewController, Presentable, Coordinable {
+class HomeViewController: UICollectionViewController, Presentable, Coordinable  {
 
     var coordinator: Coordinator?
     var interactor : HomeInteractor?
     var reloadButton: UIButton!
-
 
     func updateViews() {
 
@@ -21,6 +20,7 @@ class HomeViewController: UIViewController, Presentable, Coordinable {
     override func loadView() {
         view = UIView()
         view.backgroundColor = .white
+
     }
 
     override func viewDidLoad() {
@@ -55,7 +55,31 @@ class HomeViewController: UIViewController, Presentable, Coordinable {
     @objc func resetTapped() {
         interactor?.resetTapped()
     }
+}
 
 
+extension HomeViewController {
+  //1
+  override func numberOfSections(in collectionView: UICollectionView) -> Int {
+    return 0
+  }
+
+  //2
+  override func collectionView(_ collectionView: UICollectionView,
+                               numberOfItemsInSection section: Int) -> Int {
+    return 0
+  }
+
+  //3
+  override func collectionView(
+    _ collectionView: UICollectionView,
+    cellForItemAt indexPath: IndexPath
+  ) -> UICollectionViewCell {
+    let cell = collectionView
+      .dequeueReusableCell(withReuseIdentifier: "", for: indexPath)
+    cell.backgroundColor = .black
+    // Configure the cell
+    return cell
+  }
 }
 

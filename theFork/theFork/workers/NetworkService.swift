@@ -54,7 +54,7 @@ class NetWorkManager: NetWorkManagerProtocol {
                 callback?(Result.failure(NetworkError.invalidResponse))
                 return
             }
-            if response.statusCode == 200 {
+            if (200..<300) ~= response.statusCode {
                 guard let data = data  else {
                     callback?(Result.failure(NetworkError.noData))
                     return

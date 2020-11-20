@@ -27,8 +27,8 @@ struct RawRestaurant: Decodable {
     var zipcode: String?
     var speciality: String?
     var url: String?
-    var gpsLat: Float?
-    var gpsLong: Float?
+    var gpsLat: Double?
+    var gpsLong: Double?
     var currencyCode: String?
     var cardPrice: Int?
     var tripadvisorAvgRate: Float?
@@ -46,8 +46,8 @@ struct RawRestaurant: Decodable {
         zipcode = try values.decodeIfPresent(String.self, forKey: .zipcode)
         speciality = try values.decodeIfPresent(String.self, forKey: .speciality)
         url = try values.decodeIfPresent(String.self, forKey: .url)
-        gpsLat = try values.decodeIfPresent(Float.self, forKey: .gpsLat)
-        gpsLong = try values.decodeIfPresent(Float.self, forKey: .gpsLong)
+        gpsLat = try values.decodeIfPresent(Double.self, forKey: .gpsLat)
+        gpsLong = try values.decodeIfPresent(Double.self, forKey: .gpsLong)
         currencyCode = try values.decodeIfPresent(String.self, forKey: .currencyCode)
         cardPrice = try values.decodeIfPresent(Int.self, forKey: .cardPrice)
         tripadvisorAvgRate = try values.decodeIfPresent(Float.self, forKey: .tripadvisorAvgRate)
