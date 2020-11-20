@@ -10,13 +10,16 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    var appCoordinator: AppCoordinator?
     var window: UIWindow?
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        NetWorkManager().getData { (restaurant, error) in
-
-        }
+       
+        let window = UIWindow(frame: UIScreen.main.bounds)
+        self.window = window
+        appCoordinator = AppCoordinator( from: nil , screen : HomeViewController())
+        appCoordinator?.configureAndStartFromWindow(window)
         // Override point for customization after application launch.
         return true
     }
