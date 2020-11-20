@@ -12,7 +12,7 @@ import XCTest
 @testable import theFork
 class NetworkTests: XCTestCase {
     private let RESTAURANT_URL = "https://raw.githubusercontent.com/clebodam/theFork/master/theFork/jsonTest"
-    private let RESTAURANT_URL_BAD_PARSING = "https://raw.githubusercontent.com/clebodam/theFork/master/theFork/jsonTest"
+    private let RESTAURANT_URL_BAD_PARSING = "https://raw.githubusercontent.com/clebodam/theFork/master/theFork/json_bad_parsing"
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -58,7 +58,7 @@ class NetworkTests: XCTestCase {
         let nwManager = NetWorkManager()
         let testFailExpectation = expectation(description: "testFailExpectation")
 
-        nwManager.get([Int].self, route: RESTAURANT_URL) { result in
+        nwManager.get(RawRestaurant.self, route: RESTAURANT_URL_BAD_PARSING) { result in
             switch result {
             case .success:
                XCTAssertTrue(false)
