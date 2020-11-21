@@ -1,15 +1,16 @@
 //
-//  HomeCoordinator.swift
+//  DiaporamaCoordinator.swift
 //  theFork
 //
-//  Created by Damien on 19/11/2020.
+//  Created by Damien on 21/11/2020.
 //
 
 import Foundation
 import UIKit
 
-class HomeCoordinator: Coordinator   {
+class DiaporamaCoordinator: Coordinator {
     var context: Coordinable?
+
     var navigationController: CoordinableNavivationController?
 
     required init() {
@@ -17,6 +18,8 @@ class HomeCoordinator: Coordinator   {
 
     func start() {
         context?.registerCoordinator(coordinator: self)
-        self.push(self.context)
+        self.present(self.context)
     }
+
+    
 }

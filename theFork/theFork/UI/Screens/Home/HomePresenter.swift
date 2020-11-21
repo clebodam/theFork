@@ -24,11 +24,10 @@ class HomePresenter : Presenter {
     var viewModelData: RestaurantProtocol?
 
     func reloadData() {
-        DispatchQueue.main.async {
-            self.homeScreen?.updateViews()
+        DispatchQueue.main.async { [self] in
+            self.homeScreen?.updateViews(viewModel: viewModelData)
         }
     }
-
 
     func startLoading() {
         self.homeScreen?.startLoading()
@@ -37,7 +36,6 @@ class HomePresenter : Presenter {
     func stopLoading() {
         self.homeScreen?.stopLoading()
     }
-
 
 }
 

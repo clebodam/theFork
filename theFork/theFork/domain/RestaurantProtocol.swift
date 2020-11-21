@@ -7,7 +7,13 @@
 
 import Foundation
 
+enum InfoType: Int{
+    case diaporama
+    case infos
+    case map
+    case button
 
+}
 
 protocol ModelProtocol {
 
@@ -18,6 +24,26 @@ protocol RestaurantProtocol {
     var infos: RestaurantInfosProtocol? { get set }
     var mapInfos: RestaurantMapProtocol? { get set }
     var picsDiaporama: RestaurantDiaporamaProtocol? { get set }
+    var buttonModel: ButtonProtocol? { get set }
+}
+
+extension RestaurantProtocol {
+    func getModelForRow(_ row: InfoType) -> ModelProtocol? {
+        switch row {
+        case .diaporama:
+            return picsDiaporama
+        case .infos:
+            return infos
+        case .map:
+            return mapInfos
+        case .button:
+            return buttonModel
+        }
+    }
+
+    func rowNumber() -> Int {
+        return 4
+    }
 }
 
 

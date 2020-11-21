@@ -45,7 +45,11 @@ extension Coordinator {
         navigationController?.present(viewController, animated: true, completion: nil)
     }
 
-     init(from: Coordinable?, screen: Coordinable?) {
+    func dissmiss(completion: (()-> Void)? = nil) {
+        context?.dismiss(animated: true, completion: completion)
+    }
+
+    init(from: Coordinable?, screen: Coordinable?) {
         self.init()
         context = screen
         if let from = from as? CoordinableNavivationController {

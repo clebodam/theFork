@@ -14,7 +14,7 @@ protocol Presenter: class  {
 }
 
 protocol Presentable: class {
-    func updateViews()
+    func updateViews(viewModel: Any?)
 }
 
 

@@ -8,13 +8,7 @@
 import Foundation
 import CoreLocation
 
-enum InfoType {
-    case diaporama
-    case infos
-    case map
-    case button
 
-}
 
 struct RestaurantViewModel: RestaurantProtocol {
 
@@ -31,19 +25,6 @@ struct RestaurantViewModel: RestaurantProtocol {
         mapInfos = RestaurantMapViewModel(rawRestaurant: rawRestaurant)
         picsDiaporama = RestaurantDiaporamaViewModel(rawRestaurant: rawRestaurant)
         buttonModel = ButtonViewModel()
-    }
-
-    func getModelForRow(_ row: InfoType) -> ModelProtocol? {
-        switch row {
-        case .diaporama:
-            return picsDiaporama
-        case .infos:
-            return infos
-        case .map:
-            return mapInfos
-        case .button:
-            return buttonModel
-        }
     }
 }
 
