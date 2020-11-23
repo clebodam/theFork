@@ -49,6 +49,7 @@ extension RestaurantProtocol {
 
 protocol RestaurantInfosProtocol: ModelProtocol {
     var name: String? { get set }
+    var address: String? { get set }
     var city: String? { get set }
     var zipcode: String? { get set }
     var speciality: String? { get set }

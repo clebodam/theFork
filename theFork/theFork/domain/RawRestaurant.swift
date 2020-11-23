@@ -18,10 +18,11 @@ struct RawRestaurant: Decodable {
         case avgRate = "avg_rate"
         case rateCount = "rate_count"
         case picsDiaporama = "pics_diaporama"
-        case id, name, city, zipcode, speciality, url
+        case id,address,  name, city, zipcode, speciality, url
     }
 
     var id: Int?
+    var address: String?
     var name: String?
     var city: String?
     var zipcode: String?
@@ -41,6 +42,7 @@ struct RawRestaurant: Decodable {
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         id = try values.decodeIfPresent(Int.self, forKey: .id)
+        address = try values.decodeIfPresent(String.self, forKey: .address)
         name = try values.decodeIfPresent(String.self, forKey: .name)
         city = try values.decodeIfPresent(String.self, forKey: .city)
         zipcode = try values.decodeIfPresent(String.self, forKey: .zipcode)

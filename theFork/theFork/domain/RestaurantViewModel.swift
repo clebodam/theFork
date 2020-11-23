@@ -7,7 +7,7 @@
 
 import Foundation
 import CoreLocation
-
+import UIKit
 
 
 struct RestaurantViewModel: RestaurantProtocol {
@@ -32,6 +32,8 @@ struct RestaurantViewModel: RestaurantProtocol {
 struct RestaurantInfosViewModel: RestaurantInfosProtocol {
     var name: String?
 
+    var address: String?
+
     var city: String?
 
     var zipcode: String?
@@ -54,6 +56,7 @@ struct RestaurantInfosViewModel: RestaurantInfosProtocol {
 
     init(rawRestaurant: RawRestaurant) {
         name = rawRestaurant.name
+        address = rawRestaurant.address
         city = rawRestaurant.city
         zipcode = rawRestaurant.zipcode
         speciality = rawRestaurant.speciality
@@ -65,6 +68,33 @@ struct RestaurantInfosViewModel: RestaurantInfosProtocol {
         avgRate = rawRestaurant.avgRate
         rateCount = rawRestaurant.rateCount
     }
+
+    func getFullAddress() -> String{
+       return "\(self.address ?? "") \(self.city ?? "") \(self.zipcode ?? "")"
+    }
+
+    
+    func averrageAttributedString() -> NSAttributedString {
+        let note = "\(avgRate ?? 0)"
+        let ref = "/10"
+        let boldfont = UIFont.boldSystemFont(ofSize: 24.0)
+        let normalfont = UIFont.boldSystemFont(ofSize: 16.0)
+        let noteAttributes = [NSAttributedString.Key.font: boldfont]
+        let noramlAttributes = [NSAttributedString.Key.font: normalfont]
+        let attributedNote = NSAttributedString(string: note, attributes: noteAttributes)
+        let attributedRef = NSAttributedString(string: ref, attributes: noramlAttributes)
+
+        return attributedNote + attributedRef
+    }
+
+    func forkReviewString() -> String {
+        return "\(rateCount ?? 0) Fork review(s)"
+    }
+
+    func tripAdvisorReviewString() -> String {
+        return "\(tripadvisorRateCount ?? 0) TripAdvisor review(s)"
+    }
+
 }
 
 struct RestaurantMapViewModel: RestaurantMapProtocol {

@@ -14,6 +14,7 @@ class DiapoaramaCell: BasicCell {
 
     weak var delegate: DiapoaramaCellDelegate?
     var model : RestaurantDiaporamaViewModel?
+
     private let itemImage : UIImageView = {
         let imgView = UIImageView()
         imgView.contentMode = .scaleAspectFill

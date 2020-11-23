@@ -6,9 +6,12 @@
 //
 
 import UIKit
-
+import MapKit
 class MapCell: BasicCell {
 
+    private let mapView : MKMapView = {
+        return MKMapView()
+    }()
     override init(frame: CGRect) {
         super.init(frame: frame)
            contentView.backgroundColor = UIColor.orange
@@ -20,6 +23,8 @@ class MapCell: BasicCell {
     }
     override func  addViews() {
         super.addViews()
+        contentView.addSubview(self.mapView)
+        self.mapView.anchor(top: contentView.topAnchor, left: contentView.leftAnchor, bottom: contentView.bottomAnchor, right: contentView.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 300, enableInsets: true)
 
     }
 }
