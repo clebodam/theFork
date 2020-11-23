@@ -40,6 +40,17 @@ class InfosCell: BasicCell {
         return createLabel()
     }()
 
+    private let shadowView : UIView = {
+        let v = UIView()
+        v.backgroundColor = .white
+        v.layer.shadowColor = UIColor.black.cgColor
+        v.layer.cornerRadius = 10
+        v.layer.shadowOpacity = 0.3
+        v.layer.shadowOffset = CGSize(width: 0,height: 10)
+        v.layer.shadowRadius = 3
+        return v
+    }()
+
     private let addressImage : UIImageView = {
         return createIcomeView("location", backGroundColor:  UIColor(rgb: 0xeef8e8, alphaVal: 1))
     }()
@@ -67,7 +78,7 @@ class InfosCell: BasicCell {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        contentView.backgroundColor = UIColor.white
+        contentView.backgroundColor = .white
         contentView.isUserInteractionEnabled = false
         addViews()
     }
@@ -77,6 +88,7 @@ class InfosCell: BasicCell {
     }
 
     override func  addViews() {
+        contentView.addSubview(shadowView)
         contentView.addSubview(nameLabel)
         contentView.addSubview(addressImage)
         contentView.addSubview(addressLabel)
@@ -85,6 +97,7 @@ class InfosCell: BasicCell {
         contentView.addSubview(cashImage)
         contentView.addSubview(cashLabel)
         contentView.addSubview(averrageContainer)
+
         nameLabel.anchor(top: contentView.topAnchor, left: contentView.leftAnchor, bottom: nil, right:contentView.rightAnchor, paddingTop:10, paddingLeft: 10, paddingBottom: 0, paddingRight: 0, width: 0, height: 0, enableInsets: true)
         addressImage.anchor(top: nameLabel.bottomAnchor, left: nameLabel.leftAnchor, bottom: nil, right:nil, paddingTop:10, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 30, height: 30, enableInsets: true)
         addressLabel.anchor(top: nil, left: addressImage.rightAnchor, bottom: nil, right: contentView.rightAnchor,centerY: addressImage.centerYAnchor, paddingTop:0, paddingLeft: 10, paddingBottom: 0, paddingRight: 0, width: 0, height: 0, enableInsets: true)
@@ -93,8 +106,10 @@ class InfosCell: BasicCell {
         cashImage.anchor(top: foodImage.bottomAnchor, left: foodImage.leftAnchor, bottom: nil, right:nil, paddingTop:10, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 30, height: 30, enableInsets: true)
 
         cashLabel.anchor(top: nil, left: cashImage.rightAnchor, bottom: nil, right: contentView.rightAnchor,centerY: cashImage.centerYAnchor, paddingTop:0, paddingLeft: 10, paddingBottom: 0, paddingRight: 0, width: 0, height: 0, enableInsets: true)
-        averrageContainer.anchor(top: cashLabel.bottomAnchor, left: contentView.leftAnchor, bottom: contentView.bottomAnchor, right: contentView.rightAnchor, paddingTop: 10, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height:0, enableInsets: true)
-        contentView.bottomAnchor.constraint(equalTo: averrageContainer.bottomAnchor, constant: 0).isActive = true
+        averrageContainer.anchor(top: cashLabel.bottomAnchor, left: contentView.leftAnchor, bottom: nil, right: contentView.rightAnchor, paddingTop: 10, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height:0, enableInsets: true)
+
+        shadowView.anchor(top: contentView.topAnchor, left: contentView.leftAnchor, bottom: averrageContainer.bottomAnchor, right:contentView.rightAnchor, paddingTop:0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0, enableInsets: true)
+        contentView.bottomAnchor.constraint(equalTo: shadowView.bottomAnchor, constant: 20).isActive = true
     }
 
     override func feedWithModel(viewModel: ModelProtocol?) {
@@ -134,9 +149,9 @@ class AverageContainerView: UIView {
 
         self.separator.anchor(top: topAnchor, left: nil, bottom: bottomAnchor, right: nil, centerY: centerYAnchor, paddingTop: 10, paddingLeft: 0, paddingBottom: 10, paddingRight: 0, width: 2, height: 0, enableInsets: true)
 
-        self.averrageView.anchor(top:  topAnchor, left: leftAnchor, bottom: bottomAnchor, right:  self.separator.leftAnchor , paddingTop: 10, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: UIScreen.main.bounds.size.width / 2, height: 0, enableInsets: true)
+        self.averrageView.anchor(top:  topAnchor, left: leftAnchor, bottom: bottomAnchor, right:  self.separator.leftAnchor , paddingTop: 10, paddingLeft: 0, paddingBottom: 10, paddingRight: 0, width: UIScreen.main.bounds.size.width / 2, height: 0, enableInsets: true)
 
-        self.tripView.anchor(top:  topAnchor, left: separator.rightAnchor, bottom: self.averrageView.bottomAnchor, right:  rightAnchor , paddingTop: 10, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: UIScreen.main.bounds.size.width / 2, height: 0, enableInsets: true)
+        self.tripView.anchor(top:  topAnchor, left: separator.rightAnchor, bottom: self.averrageView.bottomAnchor, right:  rightAnchor , paddingTop: 10, paddingLeft: 10, paddingBottom: 0, paddingRight: 0, width: 0, height: 0, enableInsets: true)
 
     }
 
@@ -249,7 +264,7 @@ class TripAdvisorView: UIView {
         addSubview(self.dotImage5)
 
         self.countLabel.anchor(top:  self.averrageLabel.bottomAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor , paddingTop: 10, paddingLeft: 0, paddingBottom: 10, paddingRight: 0, width: 0, height: 0, enableInsets: true)
-        self.imageView.anchor(top: nil, left: leftAnchor, bottom: nil, right: nil ,centerY: self.averrageLabel.centerYAnchor ,paddingTop: 0, paddingLeft: 20, paddingBottom: 0, paddingRight: 0, width: 30, height: 30, enableInsets: true)
+        self.imageView.anchor(top: nil, left: leftAnchor, bottom: nil, right: nil ,centerY: self.averrageLabel.centerYAnchor ,paddingTop: 0, paddingLeft: 10, paddingBottom: 0, paddingRight: 0, width: 30, height: 30, enableInsets: true)
 
         self.dotImage1.anchor(top: nil, left: imageView.rightAnchor, bottom: nil, right: nil ,centerY: self.imageView.centerYAnchor ,paddingTop: 0, paddingLeft: 10, paddingBottom: 0, paddingRight: 0, width: 20, height: 20, enableInsets: true)
 
