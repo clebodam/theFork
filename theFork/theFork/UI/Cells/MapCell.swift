@@ -33,6 +33,8 @@ class MapCell: BasicCell, MKMapViewDelegate {
            contentView.backgroundColor = UIColor.orange
         addViews()
         mapView.delegate = self
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tap))
+        self.mapView.addGestureRecognizer(tapGesture)
     }
 
     required init?(coder: NSCoder) {
@@ -74,13 +76,20 @@ class MapCell: BasicCell, MKMapViewDelegate {
         self.delegate?.book()
     }
 
-    
+    @objc func tap() {
+        let ann = mapView.annotations.first
+        if let coordinate = ann?.coordinate {
+            self.delegate?.didSelectCoordinates(coordinate)
+        }
+    }
 
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         if let coordinate = view.annotation?.coordinate {
             self.delegate?.didSelectCoordinates(coordinate)
         }
     }
+
+
 
     override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
         guard isUserInteractionEnabled else { return nil }
