@@ -19,7 +19,6 @@ class ScrollingDiaporamaCell: BasicCell {
         super.init(frame: frame)
         contentView.backgroundColor = UIColor.black
         contentView.isUserInteractionEnabled = false
-
         addViews()
     }
     
@@ -36,6 +35,4 @@ class ScrollingDiaporamaCell: BasicCell {
      func feedImageString(_ str: String?) {
         _ = itemImage.loadImageUsingCache(withUrl: str ?? "")
     }
-
-
 }

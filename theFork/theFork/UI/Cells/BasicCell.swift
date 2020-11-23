@@ -7,7 +7,7 @@
 
 import UIKit
 
-class BasicCell: UICollectionViewCell, ReuseIdentifierProtocol {
+ class BasicCell: UICollectionViewCell, ReuseIdentifierProtocol {
 
     // MARK: - INIT
     var viewModel: ModelProtocol?
@@ -19,7 +19,6 @@ class BasicCell: UICollectionViewCell, ReuseIdentifierProtocol {
     override init(frame: CGRect) {
         super.init(frame: frame)
            contentView.translatesAutoresizingMaskIntoConstraints = false
-           contentView.backgroundColor = UIColor.blue
         addViews()
     }
 
@@ -32,40 +31,11 @@ class BasicCell: UICollectionViewCell, ReuseIdentifierProtocol {
         fatalError("init(coder:) has not been implemented")
     }
 
-
-    let label: UILabel = {
-            let label = UILabel()
-            label.backgroundColor = .yellow
-            label.numberOfLines = 0
-            label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "irfvhrbvfvhbvhfbvhfbvhfvhbvfhbvhjdbvjebvehfbvhjfbvhfbvhfbvhfbvhfbvhfbvhfbvhbvhfbvhfbvhfbvhfbvhfbvhfbvhfbvhrfbvhrbfvhfbvhrbfvhrbfvhrfbvhrbvhbvhfbvhbvhfbvhfrbvhbvhrbvhbvhrbvhbvhvhbvfhbvhjdbvjebvehfbvhjfbvhfbvhfbvhfbvhfbvhfbvhfbvhbvhfbvhfbvhfbvhfbvhfbvhfbvhfbvhrfbvhrbfvhfbvhrbfvhrbfvhrfbvhrbvhbvhfbvhbvhfbvhfrbvhbvhrbvhbvhrbvhbvh"
-            return label
-        }()
-
-        let customView: UIView = {
-            let customView = UIView()
-            customView.backgroundColor = .green
-            customView.translatesAutoresizingMaskIntoConstraints = false
-            return customView
-        }()
-    
     func  addViews() {
-        contentView.addSubview(label)
-           label.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
-           label.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
-           label.widthAnchor.constraint(equalTo: contentView.widthAnchor).isActive = true
-
-           contentView.addSubview(customView)
-           customView.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 0).isActive = true
-           customView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
-           customView.heightAnchor.constraint(equalToConstant: 100).isActive = true
-           customView.widthAnchor.constraint(equalToConstant: 100).isActive = true
-
-               contentView.bottomAnchor.constraint(equalTo: customView.bottomAnchor, constant: 0).isActive = true
-
+       // fatalError("must be overriden")
     }
 
     func feedWithModel( viewModel: ModelProtocol?) {
-        self.viewModel = viewModel
+        fatalError("must be overriden")
     }
 }

@@ -22,19 +22,18 @@ class DiapoaramaCell: BasicCell {
         return imgView
     }()
 
-
     private let separator : UIView = {
         let view = UIView()
         view.backgroundColor = .white
         return view
     }()
+
     private let secondImage : UIImageView = {
         let imgView = UIImageView()
         imgView.contentMode = .left
         imgView.clipsToBounds = true
         return imgView
     }()
-
 
     private let moreButton : UIButton = {
         let button = UIButton(type: .custom)
@@ -45,30 +44,30 @@ class DiapoaramaCell: BasicCell {
         return button
     }()
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        contentView.backgroundColor = UIColor.white
-        contentView.isUserInteractionEnabled = false
-
-        addViews()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     override func  addViews() {
         contentView.addSubview(itemImage)
         contentView.addSubview(separator)
         contentView.addSubview(secondImage)
         contentView.addSubview(moreButton)
+        moreButton.anchor(left: contentView.leftAnchor,
+                          bottom: contentView.bottomAnchor,
+                          paddingLeft: 10,
+                          paddingBottom: 10,
+                          width: 150)
+        separator.anchor(top: contentView.topAnchor,
+                         left: itemImage.rightAnchor,
+                         bottom: itemImage.bottomAnchor,
+                         width: 5)
 
-        moreButton.anchor(top: nil, left: contentView.leftAnchor, bottom: contentView.bottomAnchor, right:nil, paddingTop:0, paddingLeft: 10, paddingBottom: 10, paddingRight: 0, width: 150, height: 0, enableInsets: true)
-        contentView.bottomAnchor.constraint(equalTo: itemImage.bottomAnchor, constant: 0).isActive = true
-        separator.anchor(top: contentView.topAnchor, left: itemImage.rightAnchor, bottom: itemImage.bottomAnchor, right:nil, paddingTop:0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 5, height: 0, enableInsets: true)
-        secondImage.anchor(top: contentView.topAnchor, left: separator.rightAnchor, bottom: itemImage.bottomAnchor, right: contentView.rightAnchor, paddingTop:0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0, enableInsets: true)
-        contentView.bottomAnchor.constraint(equalTo: itemImage.bottomAnchor, constant: 0).isActive = true
-        
-        itemImage.anchor(top: contentView.topAnchor, left: contentView.leftAnchor, bottom: nil, right: nil , paddingTop:0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: UIScreen.main.bounds.size.width * 0.858, height: 250, enableInsets: true)
+        secondImage.anchor(top: contentView.topAnchor,
+                           left: separator.rightAnchor,
+                           bottom: itemImage.bottomAnchor,
+                           right: contentView.rightAnchor)
+
+        itemImage.anchor(top: contentView.topAnchor,
+                         left: contentView.leftAnchor,
+                         width: UIScreen.main.bounds.size.width * 0.858,
+                         height: 250)
         contentView.bottomAnchor.constraint(equalTo: itemImage.bottomAnchor, constant: 0).isActive = true
         moreButton.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
     }
