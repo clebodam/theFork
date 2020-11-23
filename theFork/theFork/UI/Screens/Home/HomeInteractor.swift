@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreLocation
 
 class HomeInteractor: Interactor {
     var presenter: Presenter?
@@ -64,4 +65,17 @@ class HomeInteractor: Interactor {
             self.homePresenter?.stopLoading()
         }
     }
+
+    func interactorBook() {
+        homePresenter?.startLoading()
+        self.worker?.doSomeLikeOrShareMockAction {
+            self.homePresenter?.presenterBook()
+            self.homePresenter?.stopLoading()
+        }
+    }
+
+    func interactorDidSelectCoordinates(_ location: CLLocationCoordinate2D) {
+        homePresenter?.presenterDidSelectCoordinates(location)
+    }
+
 }

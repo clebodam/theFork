@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 class HomeViewController: UICollectionViewController, Presentable, HasInteractor,  Coordinable, DiapoaramaCellDelegate  {
     var coordinator: Coordinator?
@@ -14,6 +15,14 @@ class HomeViewController: UICollectionViewController, Presentable, HasInteractor
     var shareButton: UIButton!
     var likeButton: UIButton!
     var viewModel: RestaurantViewModel?
+    var loader: UIActivityIndicatorView = {
+        let loader =  UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+        loader.color = .white
+        loader.isHidden = false
+        loader.layer.cornerRadius = 10
+        loader.backgroundColor = .black
+        return loader
+    }()
 
     var layout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
@@ -27,14 +36,15 @@ class HomeViewController: UICollectionViewController, Presentable, HasInteractor
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        collectionView?.backgroundColor = .white
         collectionView?.collectionViewLayout = layout
         configureNavigationBarButtonItem()
-
+        self.view.addSubview(loader)
+        loader.center = self.view.center
         //register cells
         self.collectionView.register(DiapoaramaCell.self, forCellWithReuseIdentifier: DiapoaramaCell.reuseIdentifier)
         self.collectionView.register(InfosCell.self, forCellWithReuseIdentifier: InfosCell.reuseIdentifier)
         self.collectionView.register(MapCell.self, forCellWithReuseIdentifier: MapCell.reuseIdentifier)
-        self.collectionView.register(ButtonCell.self, forCellWithReuseIdentifier: ButtonCell.reuseIdentifier)
 
         // make collectionbar visible behind navigationbar
         let newInsets = UIEdgeInsets(top: -topbarHeight
@@ -65,7 +75,7 @@ class HomeViewController: UICollectionViewController, Presentable, HasInteractor
         reloadButton.imageView?.contentMode = .scaleAspectFit
         reloadButton .backgroundColor = UIColor.black.withAlphaComponent(0.6)
         reloadButton.imageEdgeInsets = UIEdgeInsets(top: 3, left: 3, bottom: 3, right: 3)
-        
+
         shareButton = UIButton()
         shareButton.addTarget(self, action: #selector(share), for: .touchUpInside)
         shareButton.setImage(UIImage(named: "share"), for: .normal)
@@ -115,12 +125,16 @@ class HomeViewController: UICollectionViewController, Presentable, HasInteractor
 
     func startLoading() {
         DispatchQueue.main.async {
+            self.loader.isHidden = false
+            self.loader.startAnimating()
             self.reloadButton.infiniteRotate()
         }
     }
 
     func stopLoading() {
         DispatchQueue.main.async {
+            self.loader.isHidden = true
+            self.loader.stopAnimating()
             self.reloadButton.removeAllAnimations()
         }
     }
@@ -163,6 +177,10 @@ extension HomeViewController {
         if let cell = cell as? DiapoaramaCell {
             cell.delegate = self
         }
+
+        if let cell = cell as? MapCell {
+            cell.delegate = self
+        }
         return cell
     }
 
@@ -186,8 +204,6 @@ extension HomeViewController {
             return InfosCell.reuseIdentifier
         case InfoType.map:
             return MapCell.reuseIdentifier
-        case InfoType.button:
-            return ButtonCell.reuseIdentifier
         }
     }
 
@@ -201,6 +217,18 @@ extension HomeViewController {
 
    @objc  func like() {
         self.homeInteractor()?.interactorLike()
+    }
+
+
+}
+
+extension HomeViewController :MapCellDelegate {
+    func didSelectCoordinates(_ location: CLLocationCoordinate2D) {
+        self.homeInteractor()?.interactorDidSelectCoordinates(location)
+    }
+
+    func book() {
+        self.homeInteractor()?.interactorBook()
     }
 
 

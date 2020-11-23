@@ -11,7 +11,6 @@ enum InfoType: Int{
     case diaporama
     case infos
     case map
-    case button
 
 }
 
@@ -24,7 +23,6 @@ protocol RestaurantProtocol {
     var infos: RestaurantInfosProtocol? { get set }
     var mapInfos: RestaurantMapProtocol? { get set }
     var picsDiaporama: RestaurantDiaporamaProtocol? { get set }
-    var buttonModel: ButtonProtocol? { get set }
 }
 
 extension RestaurantProtocol {
@@ -36,13 +34,12 @@ extension RestaurantProtocol {
             return infos
         case .map:
             return mapInfos
-        case .button:
-            return buttonModel
+
         }
     }
 
     func rowNumber() -> Int {
-        return 4
+        return 3
     }
 }
 
@@ -70,6 +67,3 @@ protocol RestaurantDiaporamaProtocol: ModelProtocol{
     var picsDiaporama: [String]? { get set }
 }
 
-protocol ButtonProtocol: ModelProtocol{
-    func getTitle() -> String
-}

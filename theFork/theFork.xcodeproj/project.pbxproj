@@ -36,7 +36,6 @@
 		6DE94C87256844750042DE56 /* DiapoaramaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE94C86256844750042DE56 /* DiapoaramaCell.swift */; };
 		6DE94C8F256844890042DE56 /* InfosCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE94C8E256844890042DE56 /* InfosCell.swift */; };
 		6DE94C94256844990042DE56 /* MapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE94C93256844990042DE56 /* MapCell.swift */; };
-		6DE94C99256844AD0042DE56 /* ButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE94C98256844AD0042DE56 /* ButtonCell.swift */; };
 		6DE94C9E256844D50042DE56 /* UIview+reuseIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE94C9D256844D50042DE56 /* UIview+reuseIdentifier.swift */; };
 		6DE94CA325685B940042DE56 /* BasicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE94CA225685B940042DE56 /* BasicCell.swift */; };
 		6DE94CB425694A2E0042DE56 /* DiaporamaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE94CB325694A2E0042DE56 /* DiaporamaViewController.swift */; };
@@ -96,7 +95,6 @@
 		6DE94C86256844750042DE56 /* DiapoaramaCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiapoaramaCell.swift; sourceTree = "<group>"; };
 		6DE94C8E256844890042DE56 /* InfosCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfosCell.swift; sourceTree = "<group>"; };
 		6DE94C93256844990042DE56 /* MapCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCell.swift; sourceTree = "<group>"; };
-		6DE94C98256844AD0042DE56 /* ButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonCell.swift; sourceTree = "<group>"; };
 		6DE94C9D256844D50042DE56 /* UIview+reuseIdentifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIview+reuseIdentifier.swift"; sourceTree = "<group>"; };
 		6DE94CA225685B940042DE56 /* BasicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicCell.swift; sourceTree = "<group>"; };
 		6DE94CB325694A2E0042DE56 /* DiaporamaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaporamaViewController.swift; sourceTree = "<group>"; };
@@ -265,7 +263,6 @@
 				6DE94C86256844750042DE56 /* DiapoaramaCell.swift */,
 				6DE94C8E256844890042DE56 /* InfosCell.swift */,
 				6DE94C93256844990042DE56 /* MapCell.swift */,
-				6DE94C98256844AD0042DE56 /* ButtonCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -436,7 +433,6 @@
 				6D6DE3E12567C9EB00344ECD /* Presenter.swift in Sources */,
 				6D6DE3D72567C93000344ECD /* AppCoordinator.swift in Sources */,
 				6D6DE3F62567CA5400344ECD /* RestaurantProtocol.swift in Sources */,
-				6DE94C99256844AD0042DE56 /* ButtonCell.swift in Sources */,
 				6D6DE3B82566E60A00344ECD /* RawRestaurant.swift in Sources */,
 				6D6DE3F02567CA2700344ECD /* HomePresenter.swift in Sources */,
 				6D6DE4082567CD0000344ECD /* UIIMageView+Network.swift in Sources */,

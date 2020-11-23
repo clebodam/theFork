@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreLocation
 import UIKit
 
 class HomePresenter : Presenter {
@@ -30,7 +31,7 @@ class HomePresenter : Presenter {
     }
 
     func modelForType(_ type: InfoType) -> ModelProtocol? {
-       return  viewModelData?.getModelForRow(type)
+        return  viewModelData?.getModelForRow(type)
     }
 
     func startLoading() {
@@ -63,6 +64,18 @@ class HomePresenter : Presenter {
     func presenterLike() {
         presentAlert("Like", "you just liked this place.")
     }
+    
+    func presenterBook() {
+        presentAlert("Book", "you just booked this place.")
+    }
+
+    func presenterDidSelectCoordinates(_ location: CLLocationCoordinate2D) {
+        if let homeCoordinator = self.homeScreen?.coordinator as? HomeCoordinator {
+            homeCoordinator.launchRouting(coord: location)
+        }
+
+    }
+
 
 }
 

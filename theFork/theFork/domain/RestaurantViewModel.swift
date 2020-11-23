@@ -18,13 +18,10 @@ struct RestaurantViewModel: RestaurantProtocol {
 
     var picsDiaporama: RestaurantDiaporamaProtocol?
 
-    var buttonModel: ButtonProtocol?
-
     init(rawRestaurant: RawRestaurant) {
         infos = RestaurantInfosViewModel(rawRestaurant: rawRestaurant)
         mapInfos = RestaurantMapViewModel(rawRestaurant: rawRestaurant)
         picsDiaporama = RestaurantDiaporamaViewModel(rawRestaurant: rawRestaurant)
-        buttonModel = ButtonViewModel()
     }
 }
 
@@ -136,10 +133,5 @@ struct RestaurantDiaporamaViewModel: RestaurantDiaporamaProtocol {
     }
 }
 
-struct ButtonViewModel: ButtonProtocol {
-    func getTitle() -> String {
-        return "titre du bouton"
-    }
-}
 
 
