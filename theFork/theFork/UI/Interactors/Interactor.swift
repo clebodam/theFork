@@ -11,3 +11,8 @@ protocol Interactor: class {
     var presenter: Presenter? { get set }
     func register(presenter: Presenter)
 }
+
+protocol HasInteractor: class {
+    var interactor: Interactor? { get set }
+    func register(interactor: Interactor)
+}

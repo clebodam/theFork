@@ -20,6 +20,7 @@ typealias GetResponse = (RawRestaurant?, NetworkError?) -> Void
 
 protocol NetWorkManagerProtocol {
     func getData(completion: @escaping GetResponse)
+    func doSomeLikeOrShareMockAction( completion: @escaping () ->())
 }
 
 class NetWorkManager: NetWorkManagerProtocol {
@@ -94,6 +95,12 @@ class NetWorkManager: NetWorkManagerProtocol {
                 netWorkError = error as? NetworkError
             }
             completion(restaurant, netWorkError)
+        }
+    }
+
+    public func doSomeLikeOrShareMockAction( completion: @escaping () ->()) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            completion()
         }
     }
 }

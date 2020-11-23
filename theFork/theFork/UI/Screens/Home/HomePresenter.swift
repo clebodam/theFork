@@ -29,12 +29,39 @@ class HomePresenter : Presenter {
         }
     }
 
+    func modelForType(_ type: InfoType) -> ModelProtocol? {
+       return  viewModelData?.getModelForRow(type)
+    }
+
     func startLoading() {
         self.homeScreen?.startLoading()
     }
 
     func stopLoading() {
         self.homeScreen?.stopLoading()
+    }
+
+    func presenterShowDiaporama() {
+        if let homeCoordinator = self.homeScreen?.coordinator as? HomeCoordinator {
+            let model = modelForType(.diaporama)
+            print("go to diaporama, \(String(describing: model))")
+            homeCoordinator.goToDiaporama(model)
+        }
+    }
+
+    func presentAlert(_ title: String, _ message: String) {
+        if let homeCoordinator = self.homeScreen?.coordinator as? HomeCoordinator {
+            homeCoordinator.presentAlert(title: title, message: message)
+        }
+    }
+
+    func presenterShare() {
+        presentAlert("Share", "you just shared this place.")
+
+    }
+
+    func presenterLike() {
+        presentAlert("Like", "you just liked this place.")
     }
 
 }

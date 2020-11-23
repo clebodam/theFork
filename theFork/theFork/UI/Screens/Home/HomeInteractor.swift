@@ -42,4 +42,26 @@ class HomeInteractor: Interactor {
         self.homePresenter?.viewModelData  = model
         self.homePresenter?.reloadData()
     }
+
+    func interactorShowDiaporama() {
+
+        homePresenter?.presenterShowDiaporama()
+    }
+
+    func interactorShare() {
+        homePresenter?.startLoading()
+        self.worker?.doSomeLikeOrShareMockAction {
+            self.homePresenter?.presenterShare()
+            self.homePresenter?.stopLoading()
+        }
+
+    }
+
+    func interactorLike() {
+        homePresenter?.startLoading()
+        self.worker?.doSomeLikeOrShareMockAction {
+            self.homePresenter?.presenterLike()
+            self.homePresenter?.stopLoading()
+        }
+    }
 }

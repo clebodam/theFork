@@ -24,7 +24,6 @@ class AppCoordinator: Coordinator {
             interactor.register(presenter: presenter)
             interactor.worker = NetWorkManager()
             context.register(interactor: interactor)
-            context.registerCoordinator(coordinator: homeCoordinator)
         }
         homeCoordinator.start()
     }

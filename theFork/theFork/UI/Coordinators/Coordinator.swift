@@ -12,7 +12,7 @@ protocol Coordinable where Self: UIViewController {
     func registerCoordinator(coordinator: Coordinator?)
 }
 
-protocol Coordinator {
+protocol Coordinator: class{
 
     var context: Coordinable? { get set }
     var navigationController: CoordinableNavivationController? { get set }
@@ -22,7 +22,6 @@ protocol Coordinator {
     init(from: Coordinable?, screen: Coordinable?)
     func start()
 }
-
 
 extension Coordinable where Self: UIViewController {
     func registerCoordinator(coordinator: Coordinator?) {

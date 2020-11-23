@@ -100,6 +100,10 @@ struct RestaurantDiaporamaViewModel: RestaurantDiaporamaProtocol {
 
         return diaporamaCount() > 1
     }
+
+    func getTitle() -> String {
+        return  showMore() ? "See all \(diaporamaCount()) photos >" : ""
+    }
 }
 
 struct ButtonViewModel: ButtonProtocol {

@@ -15,11 +15,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-       
-        let window = UIWindow(frame: UIScreen.main.bounds)
-        self.window = window
-        appCoordinator = AppCoordinator( from: nil , screen : HomeViewController(collectionViewLayout: UICollectionViewFlowLayout()))
-        appCoordinator?.configureAndStartFromWindow(window)
+
+        if #available(iOS 13.0, *) {
+            // In iOS 13 setup is done in SceneDelegate
+        } else {
+            let window = UIWindow(frame: UIScreen.main.bounds)
+            self.window = window
+            appCoordinator = AppCoordinator( from: nil , screen : HomeViewController(collectionViewLayout: UICollectionViewFlowLayout()))
+            appCoordinator?.configureAndStartFromWindow(window)
+        }
         // Override point for customization after application launch.
         return true
     }

@@ -38,7 +38,7 @@ class BasicCell: UICollectionViewCell, ReuseIdentifierProtocol {
             label.backgroundColor = .yellow
             label.numberOfLines = 0
             label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "irfvhrbvfvhbvhfbvhfbvhfvhbvfhbvhjdbvjebvehfbvhjfbvhfbvhfbvhfbvhfbvhfbvhfbvhbvhfbvhfbvhfbvhfbvhfbvhfbvhfbvhrfbvhrbfvhfbvhrbfvhrbfvhrfbvhrbvhbvhfbvhbvhfbvhfrbvhbvhrbvhbvhrbvhbvh"
+        label.text = "irfvhrbvfvhbvhfbvhfbvhfvhbvfhbvhjdbvjebvehfbvhjfbvhfbvhfbvhfbvhfbvhfbvhfbvhbvhfbvhfbvhfbvhfbvhfbvhfbvhfbvhrfbvhrbfvhfbvhrbfvhrbfvhrfbvhrbvhbvhfbvhbvhfbvhfrbvhbvhrbvhbvhrbvhbvhvhbvfhbvhjdbvjebvehfbvhjfbvhfbvhfbvhfbvhfbvhfbvhfbvhbvhfbvhfbvhfbvhfbvhfbvhfbvhfbvhrfbvhrbfvhfbvhrbfvhrbfvhrfbvhrbvhbvhfbvhbvhfbvhfrbvhbvhrbvhbvhrbvhbvh"
             return label
         }()
 
