@@ -10,9 +10,9 @@ import UIKit
 func createIcomeView(_ name: String, backGroundColor: UIColor = .white) -> UIImageView {
     let imgView = UIImageView()
     imgView.backgroundColor = backGroundColor
-    let image =  UIImage(named:name)?.withInset(UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2))
+    let image =  UIImage(named:name)?.withInset(UIEdgeInsets(top: UI_IMAGE_INSET, left: UI_IMAGE_INSET, bottom: UI_IMAGE_INSET, right: UI_IMAGE_INSET))
     imgView.image = image
-    imgView.layer.cornerRadius = 5
+    imgView.layer.cornerRadius = UI_MARGIN / 2
     imgView.contentMode = .scaleAspectFit
     imgView.clipsToBounds = true
     return imgView
@@ -43,7 +43,7 @@ class InfosCell: BasicCell {
         let v = UIView()
         v.backgroundColor = .white
         v.layer.shadowColor = UIColor.black.cgColor
-        v.layer.cornerRadius = 10
+        v.layer.cornerRadius = UI_MARGIN
         v.layer.shadowOpacity = 0.3
         v.layer.shadowOffset = CGSize(width: 0,height: 10)
         v.layer.shadowRadius = 3
@@ -51,7 +51,7 @@ class InfosCell: BasicCell {
     }()
 
     private let addressImage : UIImageView = {
-        return createIcomeView("location", backGroundColor:  UIColor(rgb: 0xeef8e8, alphaVal: 1))
+        return createIcomeView("location", backGroundColor:  COLOR_LIGHTGREEN)
     }()
 
     private let foodLabel : UILabel = {
@@ -59,7 +59,7 @@ class InfosCell: BasicCell {
     }()
 
     private let foodImage : UIImageView = {
-        return createIcomeView("food", backGroundColor:  UIColor(rgb: 0xeef8e8, alphaVal: 1))
+        return createIcomeView("food", backGroundColor: COLOR_LIGHTGREEN)
     }()
 
     private let cashLabel : UILabel = {
@@ -67,7 +67,7 @@ class InfosCell: BasicCell {
     }()
 
     private let cashImage : UIImageView = {
-        return createIcomeView("cash", backGroundColor:  UIColor(rgb: 0xeef8e8, alphaVal: 1))
+        return createIcomeView("cash", backGroundColor: COLOR_LIGHTGREEN)
     }()
 
     private let averrageContainer: AverageContainerView = {
@@ -88,45 +88,45 @@ class InfosCell: BasicCell {
 
         nameLabel.anchor(top: contentView.topAnchor, left: contentView.leftAnchor,
                          right: contentView.rightAnchor,
-                         paddingTop:10,
-                         paddingLeft: 10)
+                         paddingTop:UI_MARGIN,
+                         paddingLeft: UI_MARGIN)
         addressImage.anchor(top: nameLabel.bottomAnchor,
                             left: nameLabel.leftAnchor,
-                            paddingTop:10,
-                            width: 30,
-                            height: 30)
+                            paddingTop:UI_MARGIN,
+                            width: UI_PADDING,
+                            height: UI_PADDING)
         addressLabel.anchor(left: addressImage.rightAnchor,
                             right: contentView.rightAnchor,
                             centerY: addressImage.centerYAnchor,
-                            paddingLeft: 10)
+                            paddingLeft: UI_MARGIN)
         foodImage.anchor(top: addressImage.bottomAnchor,
                          left: addressImage.leftAnchor,
-                         paddingTop:10,
-                         width: 30,
-                         height: 30)
+                         paddingTop:UI_MARGIN,
+                         width: UI_PADDING,
+                         height: UI_PADDING)
         foodLabel.anchor(left: foodImage.rightAnchor,
                          right: contentView.rightAnchor,
                          centerY: foodImage.centerYAnchor,
-                         paddingLeft: 10)
+                         paddingLeft: UI_MARGIN)
         cashImage.anchor(top: foodImage.bottomAnchor,
                          left: foodImage.leftAnchor,
-                         paddingTop:10,
-                         width: 30,
-                         height: 30)
+                         paddingTop:UI_MARGIN,
+                         width: UI_PADDING,
+                         height: UI_PADDING)
         cashLabel.anchor(left: cashImage.rightAnchor,
                          right: contentView.rightAnchor,
                          centerY: cashImage.centerYAnchor,
-                         paddingLeft: 10)
+                         paddingLeft: UI_MARGIN)
         averrageContainer.anchor(top: cashLabel.bottomAnchor,
                                  left: contentView.leftAnchor,
                                  right: contentView.rightAnchor,
-                                 paddingTop: 10)
+                                 paddingTop: UI_MARGIN)
         shadowView.anchor(top: contentView.topAnchor,
                           left: contentView.leftAnchor,
                           bottom: averrageContainer.bottomAnchor,
                           right:contentView.rightAnchor)
 
-        contentView.bottomAnchor.constraint(equalTo: shadowView.bottomAnchor, constant: 20).isActive = true
+        contentView.bottomAnchor.constraint(equalTo: shadowView.bottomAnchor, constant: UI_MARGIN * 2).isActive = true
     }
 
     override func feedWithModel(viewModel: ModelProtocol?) {
@@ -157,6 +157,14 @@ class AverageContainerView: UIView {
         return sep
     }()
 
+    convenience init() {
+        self.init(frame: CGRect.zero)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(self.separator)
@@ -165,35 +173,25 @@ class AverageContainerView: UIView {
         self.separator.anchor(top: topAnchor,
                               bottom: bottomAnchor,
                               centerY: centerYAnchor,
-                              paddingTop: 10,
-                              paddingBottom: 10,
-                              width: 2)
+                              paddingTop: UI_MARGIN,
+                              paddingBottom: UI_MARGIN,
+                              width: UI_IMAGE_INSET)
         self.averrageView.anchor(top: topAnchor,
                                  left: leftAnchor,
                                  bottom: bottomAnchor,
                                  right: self.separator.leftAnchor ,
-                                 paddingTop: 10,
-                                 paddingBottom: 10,
+                                 paddingTop: UI_MARGIN,
+                                 paddingBottom: UI_MARGIN,
                                  width: UIScreen.main.bounds.size.width / 2)
         self.tripView.anchor(top:  topAnchor,
                              left: separator.rightAnchor,
                              bottom: self.averrageView.bottomAnchor,
                              right: rightAnchor,
-                             paddingTop: 10,
-                             paddingLeft: 10)
+                             paddingTop: UI_MARGIN,
+                             paddingLeft: UI_MARGIN)
     }
 
-    convenience init() {
-        self.init(frame: CGRect.zero)
-    }
 
-    convenience init(_ average: Double) {
-        self.init(frame: CGRect.zero)
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
 
     func feedWithModel(viewModel: ModelProtocol?) {
         guard let model = viewModel as? RestaurantInfosViewModel else {
@@ -222,6 +220,14 @@ class AverageView: UIView {
         return label
     }()
 
+    convenience init() {
+        self.init(frame: CGRect.zero)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(self.imageView)
@@ -231,27 +237,19 @@ class AverageView: UIView {
                                left: leftAnchor,
                                bottom: bottomAnchor,
                                right: rightAnchor ,
-                               paddingTop: 10,
-                               paddingBottom: 10)
+                               paddingTop: UI_MARGIN,
+                               paddingBottom: UI_MARGIN)
 
         self.imageView.anchor( left: leftAnchor,
                                centerY: self.averrageLabel.centerYAnchor,
-                               paddingLeft: 20,
-                               width: 30,
-                               height: 30)
+                               paddingLeft: UI_MARGIN * 2,
+                               width: UI_PADDING,
+                               height: UI_PADDING)
 
         self.averrageLabel.anchor(top: topAnchor,
                                   left: self.imageView.rightAnchor,
                                   right: rightAnchor,
-                                  paddingLeft: 10)
-    }
-
-    convenience init() {
-        self.init(frame: CGRect.zero)
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+                                  paddingLeft: UI_MARGIN)
     }
 
     func feedWithModel(viewModel: ModelProtocol?) {
@@ -292,6 +290,14 @@ class TripAdvisorView: UIView {
         return label
     }()
 
+    convenience init() {
+        self.init(frame: CGRect.zero)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         dotImages = [dotImage1, dotImage2, dotImage3, dotImage4, dotImage5]
@@ -309,60 +315,53 @@ class TripAdvisorView: UIView {
                                left: leftAnchor,
                                bottom: bottomAnchor,
                                right: rightAnchor ,
-                               paddingTop: 10,
-                               paddingBottom: 10)
+                               paddingTop: UI_MARGIN,
+                               paddingBottom: UI_MARGIN)
 
         self.imageView.anchor(left: leftAnchor,
                               centerY: self.averrageLabel.centerYAnchor,
-                              paddingLeft: 10,
-                              width: 30,
-                              height: 30)
+                              paddingLeft: UI_MARGIN,
+                              width: UI_PADDING,
+                              height: UI_PADDING)
 
         self.dotImage1.anchor(left: imageView.rightAnchor,
                               centerY: self.imageView.centerYAnchor,
-                              paddingLeft: 10,
-                              width: 20,
-                              height: 20)
+                              paddingLeft: UI_MARGIN,
+                              width: UI_DOT_SIZE,
+                              height: UI_DOT_SIZE)
 
         self.dotImage2.anchor(top: dotImage1.topAnchor,
                               left: dotImage1.rightAnchor,
                               centerY: self.dotImage1.centerYAnchor,
-                              paddingLeft: 3,
-                              width: 20,
-                              height: 20)
+                              paddingLeft: UI_SMALL_PADDING,
+                              width: UI_DOT_SIZE,
+                              height: UI_DOT_SIZE)
 
         self.dotImage3.anchor(top: dotImage2.topAnchor,
                               left: dotImage2.rightAnchor,
                               centerY: self.dotImage2.centerYAnchor ,
-                              paddingLeft: 3,
-                              width: 20,
-                              height: 20)
+                              paddingLeft: UI_SMALL_PADDING,
+                              width: UI_DOT_SIZE,
+                              height: UI_DOT_SIZE)
 
         self.dotImage4.anchor(top: dotImage3.topAnchor,
                               left: dotImage3.rightAnchor,
                               centerY: self.dotImage3.centerYAnchor,
-                              paddingLeft: 3,
-                              width: 20,
-                              height: 20)
+                              paddingLeft: UI_SMALL_PADDING,
+                              width: UI_DOT_SIZE,
+                              height: UI_DOT_SIZE)
 
         self.dotImage5.anchor(top: dotImage4.topAnchor,
                               left: dotImage4.rightAnchor,
                               centerY: self.dotImage4.centerYAnchor,
-                              paddingLeft: 3,
-                              width: 20, height: 20)
+                              paddingLeft: UI_SMALL_PADDING,
+                              width: UI_DOT_SIZE,
+                              height:UI_DOT_SIZE)
 
         self.averrageLabel.anchor(top: topAnchor,
                                   left: self.imageView.rightAnchor,
                                   right: rightAnchor,
-                                  paddingLeft: 10)
-    }
-
-    convenience init() {
-        self.init(frame: CGRect.zero)
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+                                  paddingLeft: UI_MARGIN)
     }
 
     func feedWithModel(viewModel: ModelProtocol?) {
@@ -379,6 +378,5 @@ class TripAdvisorView: UIView {
         self.averrageLabel.attributedText = model.averrageAttributedString()
         self.countLabel.text = model.tripAdvisorReviewString()
     }
-
 }
 

@@ -20,7 +20,7 @@ class MapCell: BasicCell, MKMapViewDelegate {
 
     private let button : UIButton = {
         let button = UIButton(type: .custom)
-        button.backgroundColor = UIColor(rgb: 0x66914c, alphaVal: 1)
+        button.backgroundColor = COLOR_DARKGREEN
         button.layer.cornerRadius = 5
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16.0)
@@ -48,16 +48,16 @@ class MapCell: BasicCell, MKMapViewDelegate {
                             left: contentView.leftAnchor,
                             bottom: contentView.bottomAnchor,
                             right: contentView.rightAnchor,
-                            height: 300)
+                            height: UI_MAP_HEIGHT)
 
         self.button.anchor(top: nil,
                            left: contentView.leftAnchor,
                            bottom: contentView.bottomAnchor,
                            right: contentView.rightAnchor,
-                           paddingLeft: 10,
-                           paddingBottom: 10,
-                           paddingRight: 10,
-                           height: 40)
+                           paddingLeft: UI_MARGIN,
+                           paddingBottom: UI_MARGIN,
+                           paddingRight: UI_MARGIN,
+                           height: UI_MAP_BUTTON_HEIGHT)
 
         button.addTarget(self, action: #selector(book), for: .touchUpInside)
     }

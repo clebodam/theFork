@@ -38,7 +38,7 @@ class DiapoaramaCell: BasicCell {
     private let moreButton : UIButton = {
         let button = UIButton(type: .custom)
         button.backgroundColor = UIColor.black.withAlphaComponent(0.6)
-        button.layer.cornerRadius = 5
+        button.layer.cornerRadius = UI_MARGIN / 2
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 14.0)
         return button
@@ -51,9 +51,9 @@ class DiapoaramaCell: BasicCell {
         contentView.addSubview(moreButton)
         moreButton.anchor(left: contentView.leftAnchor,
                           bottom: contentView.bottomAnchor,
-                          paddingLeft: 10,
-                          paddingBottom: 10,
-                          width: 150)
+                          paddingLeft: UI_MARGIN,
+                          paddingBottom: UI_MARGIN,
+                          width: UI_DIAPORAMA_HEADER_BUTTON_WIDTH)
         separator.anchor(top: contentView.topAnchor,
                          left: itemImage.rightAnchor,
                          bottom: itemImage.bottomAnchor,
@@ -66,8 +66,8 @@ class DiapoaramaCell: BasicCell {
 
         itemImage.anchor(top: contentView.topAnchor,
                          left: contentView.leftAnchor,
-                         width: UIScreen.main.bounds.size.width * 0.858,
-                         height: 250)
+                         width: UIScreen.main.bounds.size.width * UI_DIAPORAMA_HEADER_RATIO,
+                         height: UI_DIAPORAMA_HEADER_HEIGHT)
         contentView.bottomAnchor.constraint(equalTo: itemImage.bottomAnchor, constant: 0).isActive = true
         moreButton.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
     }
@@ -83,7 +83,10 @@ class DiapoaramaCell: BasicCell {
         if model.showMore() {
             _ = secondImage.loadImageUsingCache(withUrl: model.picsDiaporama?[1] ?? "")
         } else {
-            itemImage.anchor(top: contentView.topAnchor, left: contentView.leftAnchor, bottom: nil, right: contentView.rightAnchor, paddingTop:0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 250, enableInsets: true)
+            itemImage.anchor(top: contentView.topAnchor, left: contentView.leftAnchor,
+                             bottom: nil,
+                             right: contentView.rightAnchor,
+                             height: UI_DIAPORAMA_HEADER_HEIGHT)
             contentView.bottomAnchor.constraint(equalTo: itemImage.bottomAnchor, constant: 0).isActive = true
 
         }

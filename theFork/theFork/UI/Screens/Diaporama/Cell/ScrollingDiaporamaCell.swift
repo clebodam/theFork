@@ -28,7 +28,11 @@ class ScrollingDiaporamaCell: BasicCell {
 
     override func  addViews() {
         contentView.addSubview(itemImage)
-        itemImage.anchor(top: contentView.topAnchor, left: contentView.leftAnchor, bottom: nil, right: contentView.rightAnchor , paddingTop:0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height, enableInsets: true)
+        itemImage.anchor(top: contentView.topAnchor,
+                         left: contentView.leftAnchor,
+                         right: contentView.rightAnchor,
+                         width: UIScreen.main.bounds.size.width,
+                         height: UIScreen.main.bounds.size.height)
         contentView.bottomAnchor.constraint(equalTo: itemImage.bottomAnchor, constant: 0).isActive = true
     }
     
