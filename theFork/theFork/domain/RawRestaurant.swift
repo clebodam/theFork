@@ -18,7 +18,7 @@ struct RawRestaurant: Decodable {
         case avgRate = "avg_rate"
         case rateCount = "rate_count"
         case picsDiaporama = "pics_diaporama"
-        case id,address,  name, city, zipcode, speciality, url
+        case id, address, name, city, zipcode, speciality, url
     }
 
     var id: Int?
@@ -58,7 +58,7 @@ struct RawRestaurant: Decodable {
         rateCount = try values.decodeIfPresent(Int.self, forKey: .rateCount)
         picsDiaporama = try values.decodeIfPresent( [String].self, forKey: .picsDiaporama)
     }
-
+    // init for tests
     init() {
         id = 0
         address = "address"
