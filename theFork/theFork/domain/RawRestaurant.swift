@@ -59,5 +59,25 @@ struct RawRestaurant: Decodable {
         picsDiaporama = try values.decodeIfPresent( [String].self, forKey: .picsDiaporama)
     }
 
+    init() {
+        id = 0
+        address = "address"
+        name = "name"
+        city = "city"
+        zipcode = "zipCode"
+        speciality = "speciality"
+        url = "url"
+        gpsLat = 1.0
+        gpsLong = 1.0
+        currencyCode = "currencyCode"
+        cardPrice = 10
+        tripadvisorAvgRate = 1.0
+        tripadvisorRateCount = 1
+        avgRate = 1.0
+        rateCount = 1
+        picsDiaporama = ["1","2","3"]
+    }
+
+
 }
 
