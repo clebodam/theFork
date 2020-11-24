@@ -74,7 +74,7 @@ I used [XCTest](https://developer.apple.com/documentation/xctest)
 ## Home
 ![image](https://github.com/clebodam/theFork/raw/master/home.png "")
 ## Diaporama
-![image](https://github.com/clebodam/theFork/raw/master/diaporama1.png "")
+![image](https://github.com/clebodam/theFork/raw/master/diaporama.png "")
 ![image](https://github.com/clebodam/theFork/raw/master/diaporama2.png "")
 ## Action
 ![image](https://github.com/clebodam/theFork/raw/master/loader.png "")
