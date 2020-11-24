@@ -63,7 +63,7 @@ For testing each component can be tested independently of the others
 
 ## What went wrong during the test
 
-- the main constraint was not use storyBoard and respect the mandatory design
+- the main constraint was to not be able to use a storybard and to respect the mandatory design
 - I wrote massive classes in UI layer to match with all the UI elements which are numerous
 
 ## Unit tests
