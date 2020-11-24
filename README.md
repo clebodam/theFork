@@ -27,7 +27,7 @@ You should provide the following elements:
 - Your code is testable
 
 
-## DELIVERY
+# DELIVERY
 <h1 align="center">TestTheFork</h1>
 <p align="center">
   <a href="https://www.logolynx.com/images/logolynx/f9/f98c597f4b18590733032cc76fa88ce8.png"><img alt="ios" src="https://www.logolynx.com/images/logolynx/f9/f98c597f4b18590733032cc76fa88ce8.png"/></a>
@@ -69,3 +69,18 @@ For testing each component can be tested independently of the others
 ## Unit tests
 
 I used [XCTest](https://developer.apple.com/documentation/xctest) 
+
+# Results
+## Home
+![image](https://github.com/clebodam/theFork/raw/master/home.png "")
+## Diaporama
+![image](https://github.com/clebodam/theFork/raw/master/diaporama1.png "")
+![image](https://github.com/clebodam/theFork/raw/master/diaporama2.png "")
+## Action
+![image](https://github.com/clebodam/theFork/raw/master/loader.png "")
+![image](https://github.com/clebodam/theFork/raw/master/alert.png "")
+
+## Map
+![image](https://github.com/clebodam/theFork/raw/master/map.png "")
+
+
