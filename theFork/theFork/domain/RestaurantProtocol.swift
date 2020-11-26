@@ -20,9 +20,9 @@ protocol ModelProtocol {
 
 protocol RestaurantProtocol {
 
-    var infos: RestaurantInfosProtocol? { get set }
-    var mapInfos: RestaurantMapProtocol? { get set }
-    var picsDiaporama: RestaurantDiaporamaProtocol? { get set }
+    var infos: RestaurantInfosProtocol? { get }
+    var mapInfos: RestaurantMapProtocol? { get }
+    var picsDiaporama: RestaurantDiaporamaProtocol? { get }
 }
 
 extension RestaurantProtocol {
@@ -34,7 +34,6 @@ extension RestaurantProtocol {
             return infos
         case .map:
             return mapInfos
-
         }
     }
 
@@ -45,25 +44,25 @@ extension RestaurantProtocol {
 
 
 protocol RestaurantInfosProtocol: ModelProtocol {
-    var name: String? { get set }
-    var address: String? { get set }
-    var city: String? { get set }
-    var zipcode: String? { get set }
-    var speciality: String? { get set }
-    var url: String? { get set }
-    var currencyCode: String? { get set }
-    var cardPrice: Int? { get set }
-    var tripadvisorAvgRate: Float? { get set }
-    var tripadvisorRateCount: Int? { get set }
-    var avgRate: Float? { get set }
-    var rateCount: Int? { get set }
+    var name: String? { get }
+    var address: String? { get }
+    var city: String? { get }
+    var zipcode: String? { get }
+    var speciality: String? { get }
+    var url: String? { get }
+    var currencyCode: String? { get }
+    var cardPrice: Int? { get }
+    var tripadvisorAvgRate: Float? { get }
+    var tripadvisorRateCount: Int? { get }
+    var avgRate: Float? { get }
+    var rateCount: Int? { get }
 }
 
 protocol RestaurantMapProtocol: ModelProtocol {
-    var gpsLat: Double? { get set }
-    var gpsLong: Double? { get set }
+    var gpsLat: Double? { get }
+    var gpsLong: Double? { get }
 }
 protocol RestaurantDiaporamaProtocol: ModelProtocol{
-    var picsDiaporama: [String]? { get set }
+    var picsDiaporama: [String]? { get }
 }
 

@@ -7,6 +7,7 @@
 
 import Foundation
 @testable import theFork
+
 class MyRawRestaurant : RawRestaurantProtocol {
     var id: Int?
 
