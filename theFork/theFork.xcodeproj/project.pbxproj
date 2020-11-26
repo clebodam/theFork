@@ -13,6 +13,7 @@
 		6D3C9F33256B03E1005D3828 /* ScrollingDiaporamaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3C9F28256B01A9005D3828 /* ScrollingDiaporamaCell.swift */; };
 		6D3C9F38256BB1EF005D3828 /* UIColor+hexa.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3C9F37256BB1EF005D3828 /* UIColor+hexa.swift */; };
 		6D3C9F3D256BF01E005D3828 /* AttributedString+helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3C9F3C256BF01E005D3828 /* AttributedString+helpers.swift */; };
+		6D41720825701C920006BA75 /* MyRawRestaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D41720725701C920006BA75 /* MyRawRestaurant.swift */; };
 		6D6DE3642566DDAE00344ECD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6DE3632566DDAE00344ECD /* AppDelegate.swift */; };
 		6D6DE3662566DDAE00344ECD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6DE3652566DDAE00344ECD /* SceneDelegate.swift */; };
 		6D6DE3682566DDAE00344ECD /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6DE3672566DDAE00344ECD /* HomeViewController.swift */; };
@@ -68,6 +69,7 @@
 		6D3C9F28256B01A9005D3828 /* ScrollingDiaporamaCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollingDiaporamaCell.swift; sourceTree = "<group>"; };
 		6D3C9F37256BB1EF005D3828 /* UIColor+hexa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+hexa.swift"; sourceTree = "<group>"; };
 		6D3C9F3C256BF01E005D3828 /* AttributedString+helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AttributedString+helpers.swift"; sourceTree = "<group>"; };
+		6D41720725701C920006BA75 /* MyRawRestaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRawRestaurant.swift; sourceTree = "<group>"; };
 		6D6DE3602566DDAE00344ECD /* theFork.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = theFork.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D6DE3632566DDAE00344ECD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6D6DE3652566DDAE00344ECD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 			isa = PBXGroup;
 			children = (
 				6D6DE3C22566EFE500344ECD /* NetworkTests.swift */,
+				6D41720725701C920006BA75 /* MyRawRestaurant.swift */,
 				6D9E068C256CF64600D7C18E /* DomainTests.swift */,
 				6D6DE3902566DDB000344ECD /* theForkTests.swift */,
 				6D6DE3922566DDB100344ECD /* Info.plist */,
@@ -479,6 +482,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6D9E068D256CF64600D7C18E /* DomainTests.swift in Sources */,
+				6D41720825701C920006BA75 /* MyRawRestaurant.swift in Sources */,
 				6D6DE3C32566EFE500344ECD /* NetworkTests.swift in Sources */,
 				6D6DE3912566DDB000344ECD /* theForkTests.swift in Sources */,
 			);

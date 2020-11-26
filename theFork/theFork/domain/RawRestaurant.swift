@@ -7,7 +7,28 @@
 
 import Foundation
 
-struct RawRestaurant: Decodable {
+protocol RawRestaurantProtocol {
+    var id: Int? { get }
+    var address: String? { get }
+    var name: String? { get }
+    var city: String? { get }
+    var zipcode: String? { get }
+    var speciality: String? { get }
+    var url: String? { get }
+    var gpsLat: Double? { get }
+    var gpsLong: Double? { get }
+    var currencyCode: String? { get }
+    var cardPrice: Int? { get }
+    var tripadvisorAvgRate: Float? { get }
+    var tripadvisorRateCount: Int? { get }
+    var avgRate: Float? { get }
+    var rateCount: Int? { get }
+    var picsDiaporama: [String]? { get }
+}
+
+
+
+struct RawRestaurant: Decodable, RawRestaurantProtocol {
     enum CodingKeys: String, CodingKey {
         case gpsLat = "gps_lat"
         case gpsLong = "gps_long"
@@ -58,26 +79,6 @@ struct RawRestaurant: Decodable {
         rateCount = try values.decodeIfPresent(Int.self, forKey: .rateCount)
         picsDiaporama = try values.decodeIfPresent( [String].self, forKey: .picsDiaporama)
     }
-    // init for tests
-    init() {
-        id = 0
-        address = "address"
-        name = "name"
-        city = "city"
-        zipcode = "zipCode"
-        speciality = "speciality"
-        url = "url"
-        gpsLat = 1.0
-        gpsLong = 1.0
-        currencyCode = "currencyCode"
-        cardPrice = 10
-        tripadvisorAvgRate = 1.0
-        tripadvisorRateCount = 1
-        avgRate = 1.0
-        rateCount = 1
-        picsDiaporama = ["1","2","3"]
-    }
-
 
 }
 

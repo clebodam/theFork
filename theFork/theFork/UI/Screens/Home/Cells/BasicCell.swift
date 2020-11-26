@@ -32,7 +32,7 @@ import UIKit
     }
 
     func  addViews() {
-       // fatalError("must be overriden")
+       fatalError("must be overriden")
     }
 
     func feedWithModel( viewModel: ModelProtocol?) {

@@ -41,7 +41,6 @@ class MapCell: BasicCell, MKMapViewDelegate {
     }
 
     override func  addViews() {
-        super.addViews()
         contentView.addSubview(self.mapView)
         contentView.addSubview(self.button)
         self.mapView.anchor(top: contentView.topAnchor,

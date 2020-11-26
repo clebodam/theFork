@@ -18,13 +18,12 @@ struct RestaurantViewModel: RestaurantProtocol {
 
     var picsDiaporama: RestaurantDiaporamaProtocol?
 
-    init(rawRestaurant: RawRestaurant) {
+    init(rawRestaurant: RawRestaurantProtocol) {
         infos = RestaurantInfosViewModel(rawRestaurant: rawRestaurant)
         mapInfos = RestaurantMapViewModel(rawRestaurant: rawRestaurant)
         picsDiaporama = RestaurantDiaporamaViewModel(rawRestaurant: rawRestaurant)
     }
 }
-
 
 struct RestaurantInfosViewModel: RestaurantInfosProtocol {
     var name: String?
@@ -51,7 +50,7 @@ struct RestaurantInfosViewModel: RestaurantInfosProtocol {
 
     var rateCount: Int?
 
-    init(rawRestaurant: RawRestaurant) {
+    init(rawRestaurant: RawRestaurantProtocol) {
         name = rawRestaurant.name
         address = rawRestaurant.address
         city = rawRestaurant.city
@@ -70,7 +69,6 @@ struct RestaurantInfosViewModel: RestaurantInfosProtocol {
        return "\(self.address ?? "") \(self.city ?? "") \(self.zipcode ?? "")"
     }
 
-    
     func averrageAttributedString() -> NSAttributedString {
         let note = "\(avgRate ?? 0)"
         let ref = "/10"
@@ -80,7 +78,6 @@ struct RestaurantInfosViewModel: RestaurantInfosProtocol {
         let noramlAttributes = [NSAttributedString.Key.font: normalfont]
         let attributedNote = NSAttributedString(string: note, attributes: noteAttributes)
         let attributedRef = NSAttributedString(string: ref, attributes: noramlAttributes)
-
         return attributedNote + attributedRef
     }
 
@@ -99,7 +96,7 @@ struct RestaurantMapViewModel: RestaurantMapProtocol {
 
     var gpsLong: Double?
 
-    init(rawRestaurant: RawRestaurant) {
+    init(rawRestaurant: RawRestaurantProtocol) {
         gpsLat = rawRestaurant.gpsLat
         gpsLong = rawRestaurant.gpsLong
     }
@@ -115,7 +112,7 @@ struct RestaurantMapViewModel: RestaurantMapProtocol {
 struct RestaurantDiaporamaViewModel: RestaurantDiaporamaProtocol {
     var picsDiaporama: [String]?
 
-    init(rawRestaurant: RawRestaurant) {
+    init(rawRestaurant: RawRestaurantProtocol) {
         picsDiaporama = rawRestaurant.picsDiaporama
     }
 

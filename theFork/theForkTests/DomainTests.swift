@@ -30,7 +30,7 @@ class DomainTests: XCTestCase {
     }
 
     func testModelGeneration() throws {
-        let raw = RawRestaurant()
+        let raw = MyRawRestaurant()
         let model = RestaurantViewModel(rawRestaurant: raw)
         XCTAssertNotNil(model.infos)
         XCTAssertNotNil(model.picsDiaporama)
@@ -49,8 +49,6 @@ class DomainTests: XCTestCase {
         XCTAssertEqual(model.mapInfos?.gpsLat, raw.gpsLat)
         XCTAssertEqual(model.mapInfos?.gpsLong, raw.gpsLong)
         XCTAssertEqual(model.picsDiaporama?.picsDiaporama, raw.picsDiaporama)
-
-
     }
 
 }
