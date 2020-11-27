@@ -24,7 +24,7 @@ class HomeViewController: UICollectionViewController, Presentable, HasInteractor
         return loader
     }()
 
-    var layout: UICollectionViewFlowLayout = {
+   static var layout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         let width = UIScreen.main.bounds.size.width
@@ -34,10 +34,17 @@ class HomeViewController: UICollectionViewController, Presentable, HasInteractor
         return layout
     }()
 
+     init() {
+        super.init(collectionViewLayout: HomeViewController.layout)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView?.backgroundColor = .white
-        collectionView?.collectionViewLayout = layout
         configureNavigationBarButtonItem()
         self.view.addSubview(loader)
         loader.center = self.view.center

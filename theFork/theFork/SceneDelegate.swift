@@ -21,7 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         let window = UIWindow(windowScene: windowScene)
         self.window = window
-       appCoordinator = AppCoordinator( from: nil , screen : HomeViewController(collectionViewLayout: UICollectionViewFlowLayout()))
+       appCoordinator = AppCoordinator( from: nil , screen : HomeViewController())
         appCoordinator?.configureAndStartFromWindow(window)
     }
 

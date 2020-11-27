@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } else {
             let window = UIWindow(frame: UIScreen.main.bounds)
             self.window = window
-            appCoordinator = AppCoordinator( from: nil , screen : HomeViewController(collectionViewLayout: UICollectionViewFlowLayout()))
+            appCoordinator = AppCoordinator( from: nil , screen : HomeViewController())
             appCoordinator?.configureAndStartFromWindow(window)
         }
         // Override point for customization after application launch.
