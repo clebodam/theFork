@@ -39,37 +39,48 @@ class NetWorkManager: NetWorkManagerProtocol {
     }
 
     internal  func get<T>( _ type: T.Type ,route: String?, callback: ((Result<T, Error>) -> Void)?) where T: Decodable {
-        if let task = currentTask { task.cancel() }
+
+        let completion: (Result<T, Error>) -> Void = {result in
+            callback?(result)
+            self.currentTask = nil
+        }
+
+        if let task = currentTask {
+            task.cancel()
+        }
         guard let url = URL(string: route ?? "") else {
-            callback?(Result.failure(NetworkError.badUrl))
+            completion(Result.failure(NetworkError.badUrl))
             return
         }
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         currentTask = session.dataTask(with: request, completionHandler: { (data, response, error) in
-            if let e = error {
-                callback?(Result.failure(e))
+            if let error = error {
+                completion(Result.failure(error))
                 return
             }
             guard let response = response as? HTTPURLResponse  else {
-                callback?(Result.failure(NetworkError.invalidResponse))
+                completion(Result.failure(NetworkError.invalidResponse))
                 return
             }
             if (200..<300) ~= response.statusCode {
                 guard let data = data  else {
-                    callback?(Result.failure(NetworkError.noData))
+                    completion(Result.failure(NetworkError.noData))
                     return
                 }
                 do {
                     let decoder = JSONDecoder()
                     let responseObject  = try decoder.decode(type, from: data)
-                    callback?(Result.success(responseObject))
+                    completion(Result.success(responseObject))
+
                 } catch {
                     print(error)
-                    callback?(Result.failure(NetworkError.serialization))
+                    completion(Result.failure(NetworkError.serialization))
+                    self.currentTask = nil
                 }
             } else {
-                callback?(Result.failure(NetworkError.invalidStatusCode))
+                completion(Result.failure(NetworkError.invalidStatusCode))
+
             }
         })
         currentTask?.resume()
