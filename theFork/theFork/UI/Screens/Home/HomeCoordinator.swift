@@ -56,6 +56,20 @@ class HomeCoordinator: Coordinator   {
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         alertController.addAction(okAction)
         alertController.addAction(cancelAction)
+        alertController.fixNegativeWidthConstraints()
         self.context?.present(alertController, animated: true, completion: nil)
+    }
+}
+
+extension UIAlertController {
+    func fixNegativeWidthConstraints() {
+
+        for subview in self.view.subviews {
+            for constraint in subview.constraints {
+                if constraint.constant < 0 {
+                    constraint.constant = -constraint.constant
+                }
+            }
+        }
     }
 }

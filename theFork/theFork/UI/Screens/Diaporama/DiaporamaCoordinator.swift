@@ -10,7 +10,6 @@ import UIKit
 
 class DiaporamaCoordinator: Coordinator {
     var context: Coordinable?
-
     var navigationController: CoordinableNavivationController?
 
     required init() {
