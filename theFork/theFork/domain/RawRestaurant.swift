@@ -26,8 +26,6 @@ protocol RawRestaurantProtocol {
     var picsDiaporama: [String]? { get }
 }
 
-
-
 struct RawRestaurant: Decodable, RawRestaurantProtocol {
     enum CodingKeys: String, CodingKey {
         case gpsLat = "gps_lat"
@@ -59,7 +57,6 @@ struct RawRestaurant: Decodable, RawRestaurantProtocol {
     var rateCount: Int?
     var picsDiaporama: [String]?
 
-
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         id = try values.decodeIfPresent(Int.self, forKey: .id)
@@ -79,6 +76,5 @@ struct RawRestaurant: Decodable, RawRestaurantProtocol {
         rateCount = try values.decodeIfPresent(Int.self, forKey: .rateCount)
         picsDiaporama = try values.decodeIfPresent( [String].self, forKey: .picsDiaporama)
     }
-
 }
 

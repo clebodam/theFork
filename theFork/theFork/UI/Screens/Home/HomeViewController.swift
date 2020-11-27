@@ -52,12 +52,10 @@ class HomeViewController: UICollectionViewController, Presentable, HasInteractor
         self.collectionView.register(DiapoaramaCell.self, forCellWithReuseIdentifier: DiapoaramaCell.reuseIdentifier)
         self.collectionView.register(InfosCell.self, forCellWithReuseIdentifier: InfosCell.reuseIdentifier)
         self.collectionView.register(MapCell.self, forCellWithReuseIdentifier: MapCell.reuseIdentifier)
-
         // make collectionbar visible behind navigationbar
         let newInsets = UIEdgeInsets(top: -topbarHeight
                                      , left: 0, bottom: 0, right: 0)
         self.collectionView.contentInset = newInsets;
-
         homeInteractor()?.getData()
     }
 
@@ -124,10 +122,8 @@ class HomeViewController: UICollectionViewController, Presentable, HasInteractor
         let likeCurrHeight = sharebarItem.customView?.heightAnchor.constraint(equalToConstant: 30)
         likeCurrHeight?.isActive = true
 
-        
         navigationItem.leftBarButtonItem =  buttonbarItem
         navigationItem.rightBarButtonItems =  [likebarItem, sharebarItem]
-
     }
 
     func startLoading() {
@@ -163,12 +159,10 @@ extension HomeViewController {
         return 1
     }
 
-
     override func collectionView(_ collectionView: UICollectionView,
                                  numberOfItemsInSection section: Int) -> Int {
         return self.viewModel?.rowNumber() ?? 0
     }
-
 
     override func collectionView( _ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
@@ -191,7 +185,6 @@ extension HomeViewController {
         return cell
     }
 
-
     override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
         return false
     }
@@ -200,7 +193,6 @@ extension HomeViewController {
         let width = view.frame.width // In this example the width is the same as the whole view.
         let height = CGFloat(200)
         return CGSize(width: width, height: height)
-
     }
 
     func identifierForType(_ type: InfoType) -> String {
@@ -225,8 +217,6 @@ extension HomeViewController {
    @objc  func like() {
         self.homeInteractor()?.interactorLike()
     }
-
-
 }
 
 extension HomeViewController :MapCellDelegate {
@@ -237,7 +227,5 @@ extension HomeViewController :MapCellDelegate {
     func book() {
         self.homeInteractor()?.interactorBook()
     }
-
-
 }
 

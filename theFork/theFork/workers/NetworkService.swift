@@ -29,7 +29,6 @@ class NetWorkManager: NetWorkManagerProtocol {
     var sessionCfg: URLSessionConfiguration
     private let RESTAURANT_HOST = "ptitchevreuil.github.io"
     private let RESTAURANT_PATH = "/test.json"
-
     private var currentTask: URLSessionDataTask?
 
     init() {

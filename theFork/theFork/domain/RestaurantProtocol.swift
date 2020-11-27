@@ -11,7 +11,6 @@ enum InfoType: Int{
     case diaporama
     case infos
     case map
-
 }
 
 protocol ModelProtocol {
@@ -41,7 +40,6 @@ extension RestaurantProtocol {
         return 3
     }
 }
-
 
 protocol RestaurantInfosProtocol: ModelProtocol {
     var name: String? { get }

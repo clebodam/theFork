@@ -102,7 +102,6 @@ class DiapoaramaCell: BasicCell {
         return super.hitTest(point, with: event)
     }
 
-
     @objc func buttonAction() {
         guard let delegate = delegate else {
             return

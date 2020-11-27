@@ -50,5 +50,4 @@ class DomainTests: XCTestCase {
         XCTAssertEqual(model.mapInfos?.gpsLong, raw.gpsLong)
         XCTAssertEqual(model.picsDiaporama?.picsDiaporama, raw.picsDiaporama)
     }
-
 }

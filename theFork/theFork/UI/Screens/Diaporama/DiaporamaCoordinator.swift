@@ -20,6 +20,4 @@ class DiaporamaCoordinator: Coordinator {
         context?.registerCoordinator(coordinator: self)
         self.present(self.context)
     }
-
-    
 }

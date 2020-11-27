@@ -42,7 +42,6 @@ class NetworkTests: XCTestCase {
                 } else {
                     XCTAssertTrue(false)
                 }
-
             }
             testFailExpectation.fulfill()
         }

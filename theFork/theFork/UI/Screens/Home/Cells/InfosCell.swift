@@ -191,13 +191,10 @@ class AverageContainerView: UIView {
                              paddingLeft: UI_MARGIN)
     }
 
-
-
     func feedWithModel(viewModel: ModelProtocol?) {
         guard let model = viewModel as? RestaurantInfosViewModel else {
             return
         }
-
         self.averrageView.feedWithModel(viewModel: model)
         self.tripView.feedWithModel(viewModel: model)
     }
@@ -274,7 +271,6 @@ class TripAdvisorView: UIView {
     private var dotImage3 = UIImageView()
     private var dotImage4 = UIImageView()
     private var dotImage5 = UIImageView()
-
     private var dotImages = [UIImageView]()
     private let averrageLabel : UILabel = {
         let label = createLabel()
@@ -304,7 +300,6 @@ class TripAdvisorView: UIView {
         addSubview(self.imageView)
         addSubview(self.averrageLabel)
         addSubview(self.countLabel)
-
         addSubview(self.dotImage1)
         addSubview(self.dotImage2)
         addSubview(self.dotImage3)

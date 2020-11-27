@@ -88,12 +88,10 @@ struct RestaurantInfosViewModel: RestaurantInfosProtocol {
     func tripAdvisorReviewString() -> String {
         return "\(tripadvisorRateCount ?? 0) TripAdvisor review(s)"
     }
-
 }
 
 struct RestaurantMapViewModel: RestaurantMapProtocol {
     var gpsLat: Double?
-
     var gpsLong: Double?
 
     init(rawRestaurant: RawRestaurantProtocol) {

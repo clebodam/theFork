@@ -75,8 +75,6 @@ class HomePresenter : Presenter {
         }
 
     }
-
-
 }
 
 

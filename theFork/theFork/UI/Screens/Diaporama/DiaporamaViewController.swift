@@ -28,7 +28,6 @@ class DiaporamaViewController: UICollectionViewController, Presentable, Coordina
         layout.scrollDirection = .horizontal
         let heigth = UIScreen.main.bounds.size.height
         let width = UIScreen.main.bounds.size.width
-
         layout.itemSize = CGSize(width: width , height: heigth)
         layout.minimumInteritemSpacing = 0
         layout.minimumLineSpacing = 0
@@ -42,10 +41,6 @@ class DiaporamaViewController: UICollectionViewController, Presentable, Coordina
         collectionView?.isPagingEnabled = true
         //register cells
         self.collectionView.register(ScrollingDiaporamaCell.self, forCellWithReuseIdentifier: ScrollingDiaporamaCell.reuseIdentifier)
-
-
-
-
     }
 
     @objc func back() {
@@ -57,12 +52,10 @@ class DiaporamaViewController: UICollectionViewController, Presentable, Coordina
         return 1
     }
 
-
     override func collectionView(_ collectionView: UICollectionView,
                                  numberOfItemsInSection section: Int) -> Int {
         return self.viewModel?.diaporamaCount() ?? 0
     }
-
 
     override func collectionView( _ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView
@@ -74,7 +67,6 @@ class DiaporamaViewController: UICollectionViewController, Presentable, Coordina
         }
         return cell
     }
-
 
     override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
         return false

@@ -13,5 +13,4 @@ class DiaporamaInteractor: Interactor {
     func register(presenter: Presenter) {
         self.presenter = presenter
     }
-
 }

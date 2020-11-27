@@ -77,5 +77,4 @@ class HomeInteractor: Interactor {
     func interactorDidSelectCoordinates(_ location: CLLocationCoordinate2D) {
         homePresenter?.presenterDidSelectCoordinates(location)
     }
-
 }
